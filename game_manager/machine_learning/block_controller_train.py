@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+
+
 from datetime import datetime
 import random
 import copy
@@ -713,12 +715,15 @@ class Block_Controller(object):
         bampiness,height = self.get_bumpiness_and_height(board)
         # 高さ最大を求める
         max_height = self.get_max_height(board)
+
+        
+        # 削除したライン数と削除後の盤面を取得
+        lines_cleared, board = self.check_cleared_rows(board)
         ## 穴の数を求める
         hole_num = self.get_holes(board)
         # ミノを落とした時に、新しい穴ができたか
         hole_num_dif = hole_num - self.num_holes_prev         #add
-        # 削除したライン数と削除後の盤面を取得
-        lines_cleared, board = self.check_cleared_rows(board)
+        
         # ミノを落とす前の盤面の穴の数を求める
         self.num_holes_prev = self.get_holes(board)     #add
 
